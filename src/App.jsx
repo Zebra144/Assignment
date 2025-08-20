@@ -13,7 +13,7 @@ const App = () => {
   const user = {
     name: "Shihab Sharar",
     email: "shihab.cse.20230104144@aust.edu",
-    avatar: zebraPhoto, // use your zebra image
+    avatar: zebraPhoto,
   };
 
   return (
