@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import Profile from "./pages/Profile";
+import Articles from "./pages/Articles";
+import "./App.css";
+import zebraPhoto from "./assets/zebra.jpg";
 
-function App() {
-  const [count, setCount] = useState(0)
+
+const App = () => {
+
+  const [page, setPage] = useState("profile");
+
+
+  const user = {
+    name: "Shihab Sharar",
+    email: "shihab.cse.20230104144@aust.edu",
+    avatar: zebraPhoto, // use your zebra image
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="app-layout">
+      <aside className="sidebar">
+        <div className="user-info">
+          <img src={user.avatar} alt="User Avatar" className="avatar" />
+          <h3>{user.name}</h3>
+        </div>
 
-export default App
+        <button
+          className={page === "profile" ? "active" : ""}
+          onClick={() => setPage("profile")}
+        >
+          Profile
+        </button>
+        <button
+          className={page === "articles" ? "active" : ""}
+          onClick={() => setPage("articles")}
+        >
+          Articles
+        </button>
+      </aside>
+
+      <main className="main-content">
+        {page === "profile" && <Profile user={user} />}
+        {page === "articles" && <Articles />}
+      </main>
+    </div>
+  );
+};
+
+
+export default App;
