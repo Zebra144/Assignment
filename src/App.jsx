@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Profile from "./pages/Profile";
+import Sidebar from "./component/Sidebar"; 
 import Articles from "./pages/Articles";
 import "./App.css";
 import zebraPhoto from "./assets/zebra.jpg";
-
 
 const App = () => {
 
@@ -18,25 +18,8 @@ const App = () => {
 
   return (
     <div className="app-layout">
-      <aside className="sidebar">
-        <div className="user-info">
-          <img src={user.avatar} alt="User Avatar" className="avatar" />
-          <h3>{user.name}</h3>
-        </div>
+      <Sidebar page={page} setPage={setPage} user={user} />
 
-        <button
-          className={page === "profile" ? "active" : ""}
-          onClick={() => setPage("profile")}
-        >
-          Profile
-        </button>
-        <button
-          className={page === "articles" ? "active" : ""}
-          onClick={() => setPage("articles")}
-        >
-          Articles
-        </button>
-      </aside>
 
       <main className="main-content">
         {page === "profile" && <Profile user={user} />}

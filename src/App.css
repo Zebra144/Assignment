@@ -6,45 +6,77 @@
 
 /* Sidebar */
 .sidebar {
-  width: 250px;
-  background-color: #2c3e50;
-  color: white;
-  padding: 20px;
+  height: 100vh;        
+  width: 240px;          
+  background: #2c3e50; 
+  color: #fff;
   display: flex;
   flex-direction: column;
+  transition: width 0.2s ease;
+}
+
+.sidebar.collapsed {
+  width: 90px;         
+}
+
+.sidebar-header {
+ height: 70px;
+  background: #223345;   
+  display: flex;
   align-items: center;
-}
-.sidebar .user-info {
-  text-align: center;
-  margin-bottom: 20px;
+  justify-content: center;
+  border-bottom: 1px solid #1b2a39;
 }
 
-.avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-  border: 2px solid #ecf0f1;
-}
-
-.sidebar button {
-  width: 100%;
-  margin: 5px 0;
-  padding: 10px;
-  background-color: #34495e;
-  color: white;
+/* Big toggle button */
+.collapse-btn {
+  width: 44px;
+  height: 44px;
   border: none;
-  border-radius: 5px;
+  border-radius: 50%;
+  background: #16a085;
+  color: #fff;
+  font-size: 22px;
   cursor: pointer;
 }
+.collapse-btn:hover { background: #1abc9c; }
 
-.sidebar button:hover {
-  background-color: #1abc9c;
+/* Sidebar body */
+ .sidebar-body {
+ flex: 1; 
+display: flex;  flex-direction: column;
+  gap: 10px;
+  padding: 14px 10px;
 }
 
-.sidebar button.active {
-  background-color: #16a085;
+/* User info */
+.user-info { text-align: center; margin: 10px 0 14px; }
+.avatar {
+  width: 70px; height: 70px; border-radius: 50%;
+  border: 2px solid #ecf0f1; object-fit: cover; margin-bottom: 8px;
 }
+.sidebar.collapsed .user-info { display: none; }
+
+/* Nav buttons */
+.nav-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #34495e;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.nav-btn:hover { background: #1abc9c; }
+.nav-btn.active { background: #16a085; }
+
+/* Hide labels when collapsed */
+.nav-label { display: inline; }
+.sidebar.collapsed .nav-label { display: none; }
+
 
 /* Main content */
 .main-content {
